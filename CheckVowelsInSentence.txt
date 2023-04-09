@@ -1,0 +1,40 @@
+#include <iostream>
+#include <string>
+using namespace std;
+char str;
+bool isVowel(char letter);
+bool isVowel(char letter){
+  switch(letter){
+    case 'A':
+    case 'E':
+    case 'I':
+    case 'O':
+    case 'U':
+    case 'a':
+    case 'e':
+    case 'i':
+    case 'o':
+    case 'u':      
+      return true;
+  default:      
+      return false;
+  }// switch
+}// isVowel
+    // Write your main here
+int main() {
+    // Write your main here
+    string letter;
+    int count = 0;
+
+    cout << "Enter a letter: ";
+    getline(cin,letter);
+    for(int i = 0; i < letter.length(); i++){
+      if(isVowel(letter[i])){
+        count++;     
+      }// if
+    }//for      
+    cout << "There are " << count 
+      << " vowels in this sentence.";
+    return 0;
+    } //main
+ 

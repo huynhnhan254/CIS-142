@@ -1,0 +1,55 @@
+#include <iostream>
+
+using namespace std;
+enum triangleType {scalene, isosceles, equilateral, 
+noTriangle};
+triangleType define;
+//function prototypes
+int triangleShape(int a, int b, int c);
+
+
+//functions
+int main() {
+    // Write your main here    
+    int a,b,c;
+
+    cout<<"Input the three sides of a triangle:"<<endl;
+    cin>>a>>b>>c;
+    triangleShape(a,b,c);
+    switch(triangleShape(a,b,c)) {
+      case scalene:
+          cout << "Triangle type = scalene" << endl;
+          break;
+      case isosceles:
+          cout << "Triangle type = isosceles" << endl;
+          break;
+      case equilateral:
+          cout << "Triangle type = equilateral" << endl;
+          break;
+      case noTriangle:
+        cout << "noTriangle" << endl;
+        break;
+    }
+    return 0;
+}
+
+int triangleShape(int a, int b, int c){
+    if(a+b>c && a+c>b && b+c>a){
+      if(a!=b && b!=c && a!=c){
+        define = scalene;
+        //return 0;
+      }else if(a == b || a == c || b == c){
+        if (a == b && a == c && b == c){
+          define = equilateral;
+           //return 2;
+        }else{
+          define = isosceles;
+          //return 1;
+          }      
+    }         
+    } //test triangle    
+    else{ 
+      define = noTriangle;   
+      //return 3;
+    }  return define; 
+} // triangleShape

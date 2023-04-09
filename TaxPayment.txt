@@ -1,0 +1,79 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+void getData(int& numChild, int& numPerson, 
+              double& salary, double& pension);
+double taxAmount(int numChild, int numPerson, double salary, double pension, double taxIncome, double totalTax);
+
+const int singleExemption = 4000;
+const int marriedExemption = 7000;
+const int personalExemption = 1500;
+const double taxRate1 = 0.15;
+const double taxRate2 = 0.25;
+const double taxRate3 = 0.35;
+const int addTax1 = 2250;
+const int addTax2 = 8460;
+
+int main() {
+    // Write your main here
+    int numChild = 0;
+    int numPerson = 0;
+    double salary = 0;
+    int pension = 0;
+    double totalTax = 0;
+    double taxIncome = 0;
+    double taxPayment = 0;
+
+    cout << fixed << setprecision(2);
+    
+    taxPayment = taxAmount(numChild, numPerson, salary, 
+                           pension, taxIncome,totalTax);
+    cout << "Total tax payment is: $" << taxPayment;
+    return 0;
+}
+void getData( int& numChild, int& numPerson, 
+              double& salary, double& pension){
+  char status;
+  cout << "Enter marital status(m/s): " << endl;
+  cin >> status;
+  if(status == 'm' || status =='M'){
+    cout << "Enter number of under 14 child: ";
+    cin >> numChild;
+    numPerson = 2 + numChild;
+  }else if(status == 's' || status == 'S'){
+    numPerson = 1;
+  }else{
+    cout << "Unvalid input";
+  }
+  cout << "Enter gross salary: $";
+  cin >> salary;
+  cout << "Enter pension plan: ";
+  cin >> pension;
+  return;
+} //getData
+
+double taxAmount(int numChild, int numPerson, 
+                  double salary, double pension, 
+                  double taxIncome, double totalTax){
+  getData(numChild, numPerson, salary, pension);
+  // calculate for single
+  if (numPerson==1){
+    taxIncome = salary - singleExemption - 
+                personalExemption - salary * (pension/100);
+  // calculate for married   
+  }else if( numPerson > 1){
+    taxIncome = salary - marriedExemption - 
+                (personalExemption*numPerson) 
+                - salary * (pension/100);
+    
+  }
+  if(taxIncome >= 0 && taxIncome <= 15000){
+    totalTax = taxIncome * taxRate1;
+  }else if(taxIncome >= 15001 && taxIncome <= 40000){
+    totalTax = (taxIncome - 15000) * taxRate2 + addTax1;
+  }else if(taxIncome > 40000){
+    totalTax = (taxIncome - 40000) * taxRate3 + addTax2;
+  }
+  return totalTax;
+} //taxAmount
+

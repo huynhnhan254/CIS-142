@@ -1,0 +1,50 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+struct computerType
+{
+    string manufacturer;
+    string modelType;
+    string processorType;
+    int ram;
+    int hardDriveSize;
+    int yearBuilt;
+    double price;
+};
+
+int main() {
+    // Write your main here
+    computerType computer;
+
+    cout << "Enter the name of the manufacturer: ";
+    getline(cin, computer.manufacturer);
+
+    cout << "Enter the model of the computer:: ";
+    getline(cin, computer.modelType);
+
+    cout <<" Enter processor type: ";
+    getline(cin, computer.processorType);
+
+    cout << "Enter the size of RAM (in GB): ";
+    cin >> computer.ram;
+
+    cout << "Enter the size of hard drive (in GB): ";
+    cin >> computer.hardDriveSize;
+
+    cout << "Enter the year the computer was built: ";
+    cin >> computer.yearBuilt;
+
+    cout << "Enter the price: ";
+    cin >> computer.price;
+
+    cout << "Manufacturer: " << computer.manufacturer << '\n';
+    cout << "Model: " << computer.modelType <<'\n';
+    cout << "Processor: " << computer.processorType <<'\n';
+    cout << "RAM: " << computer.ram <<'\n';
+    cout << "Hard Drive Size: " << computer.hardDriveSize <<'\n';
+    cout << "Year Built: " << computer.yearBuilt <<'\n';
+    cout << "Price: $" << computer.price <<'\n';
+
+    return 0;
+}

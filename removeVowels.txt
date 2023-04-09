@@ -1,0 +1,44 @@
+#include <iostream>
+#include <string>
+using namespace std;
+bool isVowel(char letter);
+string removeVowel(string letter);
+
+int main() {
+    // Write your main here
+    string str;
+    cout << "Enter a string: ";
+    getline(cin,str);
+    removeVowel(str);
+    cout << removeVowel(str);
+    return 0;
+} //main
+
+bool isVowel(char letter){
+  switch(letter){
+    case 'A':
+    case 'E':
+    case 'I':
+    case 'O':
+    case 'U':
+    case 'a':
+    case 'e':
+    case 'i':
+    case 'o':
+    case 'u':      
+      return true;
+  default:      
+      return false;
+  }// switch
+}// isVowel
+
+string removeVowel(string letter){
+    string word;
+    int len = letter.length();
+    for(int i = 0; i < len; i++){
+      if(!isVowel(letter[i])){  
+        word += letter[i];
+      } 
+    }//for  
+    return word;    
+} //removeVowel

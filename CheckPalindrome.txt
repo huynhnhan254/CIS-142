@@ -1,0 +1,33 @@
+#include <iostream>
+#include <string>
+using namespace std;
+bool isPalindrome(string str) {
+    int length = str.length(); 
+    char a,b;
+    for (int i = 0; i < length / 2; i++) {
+      a = tolower(str[i]);
+      b = tolower(str[length - 1 - i]);
+        if (a != b) {
+          cout << str <<" is not a palindrome" << endl;
+            return false;
+        } // if  
+        else{
+          cout << str <<" is a palindrome" << endl;
+        }  // else
+        return true;
+    } // for loop  
+ return false;
+}// isPalindrome
+int main() {
+    // Write your main here
+    string str;
+    //cout << "Enter the letter: ";
+    getline(cin,str);
+    isPalindrome("Madam");
+    isPalindrome("abBa");
+    isPalindrome("22");
+    isPalindrome("444244");
+    isPalindrome("67876");
+    isPalindrome("trYmeuemyRT");
+  return 0;
+}
